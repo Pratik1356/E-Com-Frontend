@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  --sky-bg: #0B0E1A;
+  --sky-surface: #131A2E;
+  --sky-card: #1B2440;
+  --sky-border: #2A3454;
+  --sky-text: #EDEFF7;
+  --sky-muted: #8891AC;
+  --sky-violet: #7C6FF0;
+  --sky-amber: #FFB454;
+  --sky-cyan: #5FD3E0;
+}
+
+@theme {
+  --color-sky-bg: #0B0E1A;
+  --color-sky-surface: #131A2E;
+  --color-sky-card: #1B2440;
+  --color-sky-border: #2A3454;
+  --color-sky-text: #EDEFF7;
+  --color-sky-muted: #8891AC;
+  --color-sky-violet: #7C6FF0;
+  --color-sky-amber: #FFB454;
+  --color-sky-cyan: #5FD3E0;
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+[data-theme="light"] {
+  --color-sky-bg: #F5F3EE;
+  --color-sky-surface: #FFFFFF;
+  --color-sky-card: #FFFFFF;
+  --color-sky-border: #E3DFD3;
+  --color-sky-text: #14171F;
+  --color-sky-muted: #6B7280;
+  --color-sky-violet: #6152D9;
+  --color-sky-amber: #C97A1E;
+  --color-sky-cyan: #0E8FA0;
+}
+
+[data-theme="light"] .starfield::before,
+[data-theme="light"] .starfield::after {
+  opacity: 0.08;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: var(--sky-bg);
+  color: var(--sky-text);
+}
+
+body {
+  font-family: var(--font-body);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--sky-amber);
+  color: #0B0E1A;
+}
+
+.starfield {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.starfield::before,
+.starfield::after {
+  content: "";
+  position: absolute;
+  inset: -200px 0 0 0;
+  height: calc(100% + 400px);
+  background-repeat: repeat;
+  background-image:
+    radial-gradient(1.4px 1.4px at 20px 30px, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 90px 80px, #ffffff 100%, transparent 100%),
+    radial-gradient(1.2px 1.2px at 150px 120px, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 210px 40px, #ffffff 100%, transparent 100%),
+    radial-gradient(1.6px 1.6px at 260px 160px, #ffffff 100%, transparent 100%),
+    radial-gradient(1px 1px at 320px 90px, #ffffff 100%, transparent 100%);
+  background-size: 340px 200px;
+  opacity: 0.35;
+  animation: drift 90s linear infinite;
+}
+
+.starfield::after {
+  background-position: 60px 70px;
+  animation-duration: 140s;
+  animation-direction: reverse;
+  opacity: 0.2;
+}
+
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield::before, .starfield::after { animation: none; }
+}
+
+.font-display { font-family: "Space Grotesk", system-ui, sans-serif; }
+.font-mono { font-family: "JetBrains Mono", monospace; }
