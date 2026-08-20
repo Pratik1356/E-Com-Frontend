@@ -20,13 +20,7 @@ Built with **React Router v6** (`react-router-dom`). Routes:
 `src/data/products.js`, the page redirects to the 404 route — so the routing
 handles bad URLs, not just the happy path.
 
-## Getting started
 
-```bash
-npm install
-npm run dev       # starts a local dev server, usually http://localhost:5173
-npm run build     # production build into /dist
-```
 
 ## Stack
 
@@ -52,8 +46,4 @@ To swap in a real API later, only `src/data/products.js` needs to change —
 every page already reads through its helper functions (`getProductById`,
 `getProductsByCategory`, `getRelatedProducts`) rather than the array directly.
 
-## Deploying
 
-Works out of the box on Vercel or Netlify (`npm run build`, output directory
-`dist`). Since routing happens client-side, make sure your host rewrites all
-paths to `index.html` (Vercel does this automatically for Vite projects).
